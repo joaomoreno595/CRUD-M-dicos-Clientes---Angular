@@ -1,0 +1,31 @@
+<h1>Lista de Clientes</h1>
+<form class="pure-form">
+    <label for="id">Id:</label>
+    <input type="number" name="id" id="id" placeholder="id" [(ngModel)]="id">
+    <button type="button" class="pure-button pure-button-primary" (click)="Pesquisar();">Pesquisar</button>
+    <button type="button" class="pure-button" routerLink ="create">Novo</button>
+</form>
+<table class="pure-table pure-table-horizontal du-tabela">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Data De Nascimento</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="corpoTabelaMedicos">
+        <tr *ngFor = "let cliente of Clientes">
+            <td>{{cliente.Id}}</td>
+            <td>{{cliente.Nome}}</td>
+            <td>{{cliente.DataNascimento}}</td>
+            <td> <a routerLink="edit/{{cliente.Id}}">
+                <i class="bi bi-pencil-fill"></i>
+            </a> 
+            -
+            <a (click)='desejaExcluir(cliente.Id,cliente.Nome);' class="cursor-hand">
+                <i class="bi bi-trash"></i>
+            </a></td>
+        </tr>
+    </tbody>
+</table>

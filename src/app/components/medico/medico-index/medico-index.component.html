@@ -1,0 +1,35 @@
+<h1>Lista de médicos</h1>
+<form class="pure-form">
+    <label for="id">Id:</label>
+    <input type="number" id="id" placeholder="Id">
+    <button type="button" class="pure-button pure-button-primary" (click)="pesquisar();">Pesquisar</button>
+    <button type="button" class="pure-button" routerLink="create">Novo</button>
+</form>
+<table class="pure-table pure-table-horizontal du-tabela">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CRM</th>
+            <th>Especialidade</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="corpoTabelaMedicos">
+        <tr *ngFor="let medico of Medicos">
+            <td>{{medico.Id}}</td>
+            <td>{{medico.Nome}}</td>
+            <td>{{medico.CRM}}</td>
+            <td>{{medico.Especialidade}}</td>
+            <td>
+                <a routerLink="edit/{{medico.Id}}">
+                    <i class="bi bi-pencil-fill"></i>
+                </a> 
+                -
+                <a (click)='desejaExcluir(medico.Id,medico.Nome);' class="cursor-hand">
+                    <i class="bi bi-trash"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
